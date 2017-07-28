@@ -1,0 +1,7 @@
+used for supervised learning in order to tell whether something fits into one category or another.
+
+Uses posterior in order to normalize data. for example, A and B are events, in order to find the chance of them happening you would do A / (A + B) and B / (A + B).
+
+Naive Bayes breaks often. It is hard to do phrases with distinct meanings.
+Supervised training algorithms aren't black boxes.
+Always train a test set and see if it is the correct algorithm.

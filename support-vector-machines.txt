@@ -1,0 +1,17 @@
+We are first classifying the points correctly then maximizing the margins.
+dimensions:
+samples:
+features:
+
+if dimensions > samples, it can still give accurate results.
+if features > samples, it will give us poor results.
+Kernels are: taking low-dimensional input space and map it to a very high-dimensional space. Something that used to be not linear separable is not a separable.
+Separate the data points using SVM, take the solution and give it back to the original space and you have a non-linear separation
+
+A higher C value tries harder to fit more data points within the area rather than a more accurate representation of the descision boundary.
+A Higher Gamma will give a small reach for the influence of a training example near the decision boundary.
+A lower Gamma will take into account further training examples to create the decision boundary.
+Outliers will fall within the correct decision boundary in a higher gamma.
+
+SVM work well with large margins of separation, but not in very large data sets or with lots of noise. (Classes are overlapping).
+That is when Naive bayes is better.

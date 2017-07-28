@@ -1,0 +1,22 @@
+from sklearn import tree
+from sklearn.metrics import accuracy_score
+clf = tree.DecisionTreeClassifier()
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
+
+accuracy_score(pred, labels_test)
+
+Decision trees are used when we have multiple linear decisions that are computed directly after one another.
+use min_samples_split in order to see the minimum amount of samples to split the decision tree.
+Entropy controls how a decision tree decides to split the data.
+
+entropy = sum(-pi * log2 * pi)
+(negative pi times log base 2 times pi)
+entropy is opposite of it's purity
+if all examples are same class, entropy is 0, but if it is evenly split the entropy is 1.0
+Information gain is the entropy of the parent - weighted average of the children if you split the parent.
+information gain = entropy(parent) - avg entropy(children)
+decision tree algorithm maximizes information gain
+biasness is the amount it ignores the data
+if you train it and it does nothing different that means it's really biased.
+if you train it and it can't handle unique items, it's has extremely high variance because it doesn't have enough bias for training.
