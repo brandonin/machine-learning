@@ -1,0 +1,4 @@
+When measuring the best fit for a regression, using the Sum of errors and sum of errors square are good.
+An issue is that if we are comparing two regressions with the same slope, it can have different errors based on the amount of data points available.
+To counteract this issue, we can use R-squared value to determine the correlation.
+R-squared is a range from 0 to 1 with 0 meaning no correlation. 

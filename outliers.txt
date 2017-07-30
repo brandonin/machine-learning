@@ -1,0 +1,5 @@
+Rejection doesn't clean up fit, it is used for anomaly detection
+Step 1: Train the dataset
+Step 2: Remove points with the largest Residual error (remove approx. 10%)
+Step 3: Retrain the dataset
+You can redo 2 and 3.

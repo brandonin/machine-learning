@@ -1,0 +1,6 @@
+Two steps in K-Means:
+1) Assign
+2) Optimize
+
+K-Means is a hill-climbing algorithm so it is very important where you put your first classifier center.
+Local Minimum in K-Means is when the the first classifiers receive their data sets.
