@@ -1,0 +1,4 @@
+Feature Scaling is rebalancing features to better determine how they affect a decision.
+So it has comparable ranges.
+
+x` (prime) = (x - x(min)) / (x(max) - x(min))
