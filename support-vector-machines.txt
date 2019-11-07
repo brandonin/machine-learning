@@ -1,5 +1,5 @@
 We are first classifying the points correctly then maximizing the margins.
-dimensions:
+dimensions: an example is the amount of unique letters in an email are each dimensions with a count as a value.
 samples:
 features:
 
