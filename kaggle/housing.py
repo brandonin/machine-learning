@@ -1,52 +1,29 @@
+# Code you have previously used to load data
 import pandas as pd
-from datetime import datetime
-from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import mean_absolute_error
 from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeRegressor
 
+
+# Path of the file to read
 iowa_file_path = '../input/home-data-for-ml-course/train.csv'
 
 home_data = pd.read_csv(iowa_file_path)
+# Create target object and call it y
+y = home_data.SalePrice
+# Create X
+features = ['LotArea', 'YearBuilt', '1stFlrSF', '2ndFlrSF', 'FullBath', 'BedroomAbvGr', 'TotRmsAbvGrd']
+X = home_data[features]
 
-avg_lot_size = round(pd.DataFrame.mean(home_data.get("LotArea")))
+# Split into validation and training data
+train_X, val_X, train_y, val_y = train_test_split(X, y, random_state=1)
 
-newest_home_age = datetime.now().year - pd.DataFrame.max(home_data.get("YearBuilt"))
+# Specify Model
+iowa_model = DecisionTreeRegressor(random_state=1)
+# Fit Model
+iowa_model.fit(train_X, train_y)
 
-melbourne_file_path = '../input/melbourne-housing-snapshot/melb_data.csv'
-
-melbourne_data = pd.read_csv(melbourne_file_path)
-melbourne_data.columns
-
-melbourne_data = melbourne_data.dropna(axis=0)
-
-y = melbourne_data.Price
-
-melbourne_features = ['Rooms', 'Bathroom', 'Landsize', 'Lattitude', 'Longtitude']
-X = melbourne_data[melbourne_features]
-X.describe()
-X.head()
-
-melbourne_model = DecisionTreeRegressor(random_state=1)
-melbourne_model.fit(X, y)
-
-print("Making predictions for the following 5 houses:")
-print(X.head())
-print("The predictions are")
-print(melbourne_model.predict(X.head()))
-
-
-##### model validation #####
-
-# split data into training and validation data, for both features and target
-# The split is based on a random number generator. Supplying a numeric value to
-# the random_state argument guarantees we get the same split every time we
-# run this script.
-train_X, val_X, train_y, val_y = train_test_split(X, y, random_state = 0)
-# define model
-melbourne_model = DecisionTreeRegressor()
-# fit model
-melbourne_model.fit(train_X, train_y)
-
-# get predicted prices on validation data
-val_predictions = melbourne_model.predict(val_X)
-print(mean_absolute_error(val_y, val_predictions))
+# Make validation predictions and calculate mean absolute error
+val_predictions = iowa_model.predict(val_X)
+val_mae = mean_absolute_error(val_predictions, val_y)
+print("Validation MAE: {:,.0f}".format(val_mae))
